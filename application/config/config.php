@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/CodeIgniter/';
+$config['base_url'] = 'http://localhost/wisk-web-shop/';
 
 /*
 |--------------------------------------------------------------------------
@@ -469,3 +469,41 @@ $config['time_reference'] = 'local';
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+/* 
+|
+|--------------------------------------------------------------------------
+Module de panier d'achat - https://github.com/gregjaouen/codeigniter_libraries
+|--------------------------------------------------------------------------
+|
+*/
+$config['basket'] = ['id_key' => 'item_id'];
+
+/* 
+|
+|--------------------------------------------------------------------------
+Module d'authentification - https://github.com/gregjaouen/codeigniter_libraries
+|--------------------------------------------------------------------------
+|
+*/
+$config['auth'] = [
+    'customer' => [
+        'table' => 'wisk_account',
+        'name' => 'input-email',
+        'password' => "input-password",
+    ],
+    'seller' => [
+        'table' => 'wisk_account',
+        'name' => 'acc_email',
+        'password' => 'acc_pass',
+        'encoding' => 'bcrypt'
+    ]
+];
+
+/* 
+|
+|--------------------------------------------------------------------------
+
+|--------------------------------------------------------------------------
+|
+*/

@@ -1,4 +1,14 @@
 {
-   "editor.fontFamily": "'3270 Condensed', 'Consolas', 'Lucida Sans MS'",
-   "editor.fontSize": 18
+   "editor.fontFamily": "'Lucida Console', 'Impact Normal', 'IBM 3270 Semi', 'Source Code Pro', 'Consolas', 'Lucida Sans MS'",
+   "editor.fontSize": 16,
+   "editor.mouseWheelZoom": true,
+   "terminal.integrated.fontSize": 16,
+   "terminal.integrated.fontFamily": "Consolas",
+   "editor.formatOnType": true,
+   "editor.lineHeight": 24,
+   "workbench.panel.defaultLocation": "right",
+   "debug.console.closeOnEnd": true,
+   "debug.console.fontFamily": "'IBM 3270 Semi'",
+   "debug.console.fontSize": 12,
+   "editor.multiCursorModifier": "ctrlCmd"
 }

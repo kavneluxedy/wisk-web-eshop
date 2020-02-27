@@ -104,4 +104,9 @@ class User extends CI_Controller
             redirect(base_url('User'));
         }
     }
+
+    public function login() {
+        $this->load->view('templates/header');
+        $this->load->view('login');
+    }
 }

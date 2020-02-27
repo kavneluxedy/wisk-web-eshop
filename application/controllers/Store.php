@@ -17,17 +17,16 @@ class Store extends CI_Controller
       $this->load->view('templates/footer');
    }
 
-   public function store_list() // Liste des produits disponibles à la vente
+   public function list() // Liste des produits disponibles à la vente
    {
       $this->load->model('Store_model');
-      $items = $this->Store_model->getItems()->result();
+      $items = $this->Store_model->getItems()->result_array();
 
       $data = array();
       $data['page_title'] = 'Wisk | Boutique';
       $data['items'] = $items;
 
       $this->load->view('store_list', $data); // Appel de la vue avec transmission du tableau  
-      // redirect(base_url('Store'));
    }
 
    public function create()
