@@ -138,7 +138,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -478,32 +478,3 @@ Module de panier d'achat - https://github.com/gregjaouen/codeigniter_libraries
 |
 */
 $config['basket'] = ['id_key' => 'item_id'];
-
-/* 
-|
-|--------------------------------------------------------------------------
-Module d'authentification - https://github.com/gregjaouen/codeigniter_libraries
-|--------------------------------------------------------------------------
-|
-*/
-$config['auth'] = [
-    'customer' => [
-        'table' => 'wisk_account',
-        'name' => 'input-email',
-        'password' => "input-password",
-    ],
-    'seller' => [
-        'table' => 'wisk_account',
-        'name' => 'acc_email',
-        'password' => 'acc_pass',
-        'encoding' => 'bcrypt'
-    ]
-];
-
-/* 
-|
-|--------------------------------------------------------------------------
-
-|--------------------------------------------------------------------------
-|
-*/

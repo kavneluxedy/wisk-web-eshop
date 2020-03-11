@@ -24,11 +24,11 @@
 
       <div class="d-flex flex-wrap-col">
          <label for="submit">
-            <input type="submit" id="submit" class="form-control bg-success" placeholder="Valider">
+            <input type="submit" id="submit" class="form-control bg-dark text-success" placeholder="Valider">
          </label>
 
          <label for="reset">
-            <a class="btn btn-warning" id="reset" href="<?= base_url('User'); ?>" role="button">Annuler</a>
+            <a class="btn btn-dark text-danger" id="reset" href="<?= base_url('User'); ?>" role="button">Annuler</a>
          </label>
       </div>
 
