@@ -2,9 +2,6 @@
     <title><?= $page_title; ?></title>
 </head>
 
-<a href="" id="show">Show Element</a>
-<div id="hidden">I'm visible !</div>
-
 <div class="carousel-wrap">
     <div class="owl-carousel item">
 
@@ -46,7 +43,7 @@
                     <!-- carte du produit -->
 
 
-                    <form method="POST" class="form-group" action="<?= base_url('Store/caddy'); ?>">
+                    <form method="POST" class="form-group" action="<?= base_url('Basket'); ?>">
                         <ul class="list-group list-group-flush">
 
                             <div class="card-body">
