@@ -1,4 +1,4 @@
-<?php
+<?php  
 
 /**
  * Basket manager in session for CodeIgniter 3.x
@@ -40,12 +40,11 @@
  * @link        https://github.com/gregjaouen/codeigniter_librairies
  */
 
-if (!defined('BASEPATH')) {
+if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Basket
-{
+class Basket {
 
     protected const ELEMENT = 'element';
     protected const QTY = 'qty';
@@ -55,8 +54,7 @@ class Basket
 
     protected $auth_config;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->load_config(Basket::BASKET, [Basket::CONFIG_ID_KEY]);
         $this->load->library('session');
         $this->set_session();
@@ -76,15 +74,15 @@ class Basket
      * @uses unsafe_set_quantity
      * @uses basket_push
      */
-    public function add(array $element, int $quantity = 1): bool
-    {
+    public function add(array $element, int $quantity=1) : bool{
         $quantity = ($quantity > 0) ? $quantity : $quantity = 1;
 
         $element_index = $this->get_element_index($element);
         if ($element_index !== null) { // if element already exists
             $newQty = $quantity + $this->get_basket()[$element_index][Basket::QTY];
             return $this->unsafe_set_quantity($element_index, $newQty);
-        } else {
+        }
+        else {
             return $this->basket_push($element, $quantity);
         }
     }
@@ -103,16 +101,16 @@ class Basket
      * @uses unsafe_add_quantity
      * @uses basket_delete
      */
-    public function substract(array $element, int $quantity = 1): bool
-    {
+    public function substract(array $element, int $quantity=1) : bool{
         $quantity = ($quantity > 0) ? $quantity : $quantity = 1;
 
         $element_index = $this->get_element_index($element);
         if ($element_index !== null) {
             $newQty = $this->get_basket()[$element_index][Basket::QTY] - $quantity;
-            if ($newQty > 0) {
+            if ($newQty > 0){
                 return $this->unsafe_set_quantity($element_index, $newQty);
-            } else {
+            }
+            else {
                 return $this->basket_delete($element_index);
             }
         }
@@ -130,16 +128,16 @@ class Basket
      * @uses get_element_index
      * @uses basket_delete
      */
-    public function remove(array $element): bool
-    {
+    public function remove(array $element) : bool {
         $element_index = $this->get_element_index($element);
         if ($element_index !== null) {
             return $this->basket_delete($element_index);
         }
         return false;
+        
     }
-
-
+    
+    
     /**
      * Edit the quantity of given element from the basket. If quantity <= 0, remove the element. Returns true if the element is correctly edited or removed.
      * 
@@ -152,14 +150,14 @@ class Basket
      * @uses unsafe_set_quantity
      * @uses remove
      */
-    public function edit_quantity(array $element, int $quantity): bool
-    {
+    public function edit_quantity(array $element, int $quantity) : bool {
         if ($quantity > 0) {
             $element_index = $this->get_element_index($element);
             if ($element_index !== null) {
                 return $this->unsafe_set_quantity($element_index, $quantity);
             }
-        } else {
+        }
+        else {
             return $this->remove($element);
         }
         return false;
@@ -171,8 +169,7 @@ class Basket
      * 
      * @return void
      */
-    public function clean(): void
-    {
+    public function clean() : void {
         $this->session->unset_userdata(Basket::BASKET);
     }
 
@@ -184,8 +181,7 @@ class Basket
      * 
      * @uses set_session
      */
-    public function get_basket(): array
-    {
+    public function get_basket() : array {
         $this->set_session();
         return $this->session->userdata(Basket::BASKET);
     }
@@ -200,8 +196,7 @@ class Basket
      * 
      * @uses get_basket
      */
-    public function get_price_sum(string $price_field_name): float
-    {
+    public function get_price_sum(string $price_field_name) : float {
         $out = 0.0;
         foreach ($this->get_basket() as $_index => $content) {
             if (isset($content[Basket::ELEMENT][$price_field_name])) {
@@ -219,8 +214,7 @@ class Basket
      * 
      * @uses get_basket
      */
-    public function get_quantity_sum(): ?int
-    {
+    public function get_quantity_sum() : ?int {
         $out = 0;
         foreach ($this->get_basket() as $_index => $content) {
             $out += $content[Basket::QTY];
@@ -236,8 +230,7 @@ class Basket
      * 
      * @uses get_basket
      */
-    public function get_element_sum(): ?int
-    {
+    public function get_element_sum() : ?int {
         return sizeof($this->get_basket());
     }
 
@@ -251,8 +244,7 @@ class Basket
      * 
      * @uses get_element_index
      */
-    public function is_in_basket(array $element): bool
-    {
+    public function is_in_basket(array $element) : bool {
         return ($this->get_element_index($element) == null) ? false : true;
     }
 
@@ -267,8 +259,7 @@ class Basket
      * @uses get_basket
      * @uses elements_have_same_id_key
      */
-    public function get_element_index(array $element): ?int
-    {
+    public function get_element_index(array $element) : ?int {
         foreach ($this->get_basket() as $index => $content) {
             if ($this->elements_have_same_id_key($content[Basket::ELEMENT], $element)) {
                 return $index;
@@ -283,8 +274,7 @@ class Basket
      *
      * @return string|null
      */
-    public function get_id_key(): string
-    {
+    public function get_id_key() : string {
         return $this->auth_config[Basket::CONFIG_ID_KEY];
     }
 
@@ -296,8 +286,7 @@ class Basket
      * 
      * @return void
      */
-    protected function update_basket_array(array $updated_basket): void
-    {
+    protected function update_basket_array(array $updated_basket) : void {
         $this->session->set_userdata(Basket::BASKET, $updated_basket);
     }
 
@@ -312,10 +301,9 @@ class Basket
      * 
      * @uses get_id_key
      */
-    protected function elements_have_same_id_key(array $a, array $b): bool
-    {
+    protected function elements_have_same_id_key(array $a, array $b) : bool {
         $id_key = $this->get_id_key();
-        if (isset($a[$id_key]) && isset($b[$id_key])) {
+        if (isset($a[$id_key]) && isset($b[$id_key])){
             return ($a[$id_key] === $b[$id_key]);
         }
         return false;
@@ -329,13 +317,12 @@ class Basket
      * 
      * @uses update_basket_array
      */
-    protected function set_session(): void
-    {
-        if ($this->session->userdata(Basket::BASKET) == null || !is_array($this->session->userdata(Basket::BASKET))) {
+    protected function set_session() : void {
+        if ($this->session->userdata(Basket::BASKET) == null || ! is_array($this->session->userdata(Basket::BASKET))) {
             $this->update_basket_array(array());
         }
     }
-
+    
 
     /**
      * TODO: identify and handle exception
@@ -349,10 +336,9 @@ class Basket
      * @uses get_basket
      * @uses update_basket_array
      */
-    protected function basket_push(array $element, int $quantity): bool
-    {
+    protected function basket_push(array $element, int $quantity) : bool {
         try {
-            if (!is_array($element)) {
+            if (!is_array($element)){
                 $element = array($element);
             }
             $basket = $this->get_basket();
@@ -362,7 +348,8 @@ class Basket
             ]);
             $this->update_basket_array($basket);
             return true;
-        } catch (Exception $e) {
+        }
+        catch (Exception $e){
             return false;
         }
     }
@@ -379,14 +366,14 @@ class Basket
      * @uses get_basket
      * @uses update_basket_array
      */
-    protected function basket_delete(int $element_index): bool
-    {
+    protected function basket_delete(int $element_index) : bool {
         try {
-            $basket = $this->get_basket();
+            $basket = $this->get_basket(); 
             array_splice($basket, $element_index, 1);
             $this->update_basket_array($basket);
             return true;
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
             return true;
         }
     }
@@ -404,14 +391,14 @@ class Basket
      * @uses get_basket
      * @uses update_basket_array
      */
-    protected function unsafe_set_quantity(int $index, int $qty): bool
-    {
+    protected function unsafe_set_quantity(int $index, int $qty) : bool {
         try {
             $basket = $this->get_basket();
             $basket[$index][Basket::QTY] = $qty;
             $this->update_basket_array($basket);
             return true;
-        } catch (Exception $e) {
+        }
+        catch (Exception $e){
             return false;
         }
     }
@@ -426,41 +413,28 @@ class Basket
      * @return void
      * @throws UnexpectedValueException $config[needed] is missing
      */
-    protected function load_config(string $item_name, array $keys_to_check): void
-    {
-        if ($this->config->item($item_name) && !empty($this->config->item($item_name))) {
+    protected function load_config(string $item_name, array $keys_to_check) : void {
+        if ($this->config->item($item_name) && !empty($this->config->item($item_name))){
             $auth_config = $this->config->item($item_name);
-            foreach ($keys_to_check as $key) {
-                if (!isset($auth_config[$key]) || $auth_config[$key] == null) {
+            foreach($keys_to_check as $key){
+                if (!isset($auth_config[$key]) || $auth_config[$key] == null){
                     throw new UnexpectedValueException(sprintf("\$config[%s][%s] is not setted <br>", $item_name, $key));
                 }
             }
             $this->auth_config = $auth_config;
-        } else {
+        }
+        else {
             throw new UnexpectedValueException(sprintf("\$config[%s] is not setted <br>", $item_name));
         }
     }
-
-
+    
+    
     /**
      * Magic method to access session and load
      */
-    public function __get($value)
-    {
-        if ($value === "session" || $value === "load" || $value === "config") {
+    public function __get($value){
+        if ($value === "session" || $value === "load" || $value === "config"){
             return get_instance()->$value;
         }
-    }
-
-
-    /*
-    * Index of basket
-    */
-    public function index()
-    {
-        $this->load->view('templates/header');
-        $this->load->view('templates/navbar');
-        $this->load->view('store_cart');
-        $this->load->view('templates/header');
     }
 }

@@ -1,5 +1,5 @@
 <fieldset class="d-flex flex-column flex-wrap-col">
-   <form class="form-group" method="POST" action="<?php echo base_url('Store'); ?>">
+   <form class="form-group" method="POST" action="<?= base_url('Store'); ?>">
 
       <label for="item_name">Nom
          <input type="text" id="item_name" class="form-control" name="item_name">
