@@ -1,16 +1,8 @@
 <fieldset class="d-flex flex-column flex-wrap-col">
    <form class="form-group" method="POST" action="<?= site_url('Store'); ?>">
 
-      <label for="item_name">Nom
+      <label for="item_name">Nom de l'objet
          <input type="text" id="item_name" class="form-control" name="item_name">
-      </label>
-
-      <label for="cat_id">Catégorie
-         <input type="text" id="cat_id" class="form-control" name="cat_id">
-      </label>
-
-      <label for="item_desc">Description
-         <input type="text" id="item_desc" class="form-control" name="item_desc">
       </label>
 
       <label for="item_img">Image
@@ -21,8 +13,8 @@
          <input type="text" id="item_price" class="form-control" name="item_price">
       </label>
 
-      <label for="item_stock">Stock
-         <input type="number" id="item_stock" class="form-control" name="item_stock" min="0">
+      <label for="item_stock">Quantité
+         <input type="number" id="item_qty" class="form-control" name="item_qty" min="0">
       </label>
 
       <div class="d-flex flex-wrap-col">

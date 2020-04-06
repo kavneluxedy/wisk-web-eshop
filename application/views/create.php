@@ -1,5 +1,5 @@
 <fieldset class="d-flex flex-column flex-wrap-col">
-   <form class="form-group" name="createUser" method="POST" action="<?= base_url('User/create'); ?>">
+   <form class="form-group" name="createUser" method="POST" action="<?= site_url('User'); ?>">
 
       <div class="form-group">
          <label for="acc_username">Nom
@@ -17,14 +17,14 @@
 
       <div class="form-group">
          <label for="acc_email">Email
-            <input type="text" id="acc_email" class="form-control" name="acc_email">
+            <input type="email" id="acc_email" class="form-control" name="acc_email">
             <?= form_error('acc_email'); ?>
          </label>
       </div>
 
       <div class="form-group">
          <label for="secret_id">Question secrète
-            <input type="text" id="secret_id" class="form-control" name="secret_id">
+            <input type="number" id="secret_id" class="form-control" name="secret_id" min="1">
             <?= form_error('secret_id'); ?>
          </label>
       </div>
@@ -35,9 +35,9 @@
          </label>
 
          <label for="reset">
-            <a class="btn btn-dark text-warning" href="<?= base_url('User'); ?>" role="button">Annuler</a>
+            <a class="btn btn-dark text-warning" href="<?= site_url('User'); ?>" role="button">Annuler</a>
          </label>
       </div>
-      
+
    </form>
 </fieldset>

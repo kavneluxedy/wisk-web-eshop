@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']    = 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']    = 'english';
 
 /*
 |--------------------------------------------------------------------------
@@ -390,11 +390,11 @@ $config['sess_regenerate_destroy'] = FALSE;
 |       'cookie_httponly') will also affect sessions.
 |
 */
-$config['cookie_prefix']	= '';
-$config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
-$config['cookie_secure']	= FALSE;
-$config['cookie_httponly'] 	= FALSE;
+$config['cookie_prefix']    = '';
+$config['cookie_domain']    = '';
+$config['cookie_path']        = '/';
+$config['cookie_secure']    = FALSE;
+$config['cookie_httponly']     = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -477,4 +477,31 @@ Module de panier d'achat - https://github.com/gregjaouen/codeigniter_libraries
 |--------------------------------------------------------------------------
 |
 */
-$config['basket'] = ['id_key' => 'item_id'];
+$config['basket'] = ['id_key' => 'order_id'];
+
+/*
+| Authorization implementation as CodeIgniter Library:
+
+  Must set $config['auth'] in config.php
+ * This must contain at least one type, as an associative array.
+ * This array has to contain:
+ *          - 'table'       :   for the table to look at
+ *          - 'login'       :   the field name for the login
+ *          - 'password'    :   the field name for the password
+ * This array might contain:
+ *          - 'encoding'    :   ["plaintext" | "bcrypt"];
+ * The encoding "bcrypt" is set as default|
+*/
+$config['auth'] = [
+  'customer' => [
+    'table'     =>  'wisk_account',
+    'login'     =>  'acc_id',
+    'password'  =>  'acc_pass'
+  ],
+  'seller' => [
+    'table'     =>  'wisk_account',
+    'login'     =>  'acc_id',
+    'password'  =>  'acc_pass',
+    'encoding'  =>  'plaintext'
+  ]
+];

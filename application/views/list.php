@@ -14,7 +14,7 @@ if ($failure != "") { ?>
 
 <div class="col-md-8 text-right">
    <div class="row">
-      <a class="btn btn-dark text-danger" href="<?= base_url('User/create'); ?>" role="button">Create</a>
+      <a class="btn btn-dark text-danger" href="<?= site_url('User/create'); ?>" role="button">Create</a>
    </div>
 </div>
 
@@ -36,8 +36,8 @@ if ($failure != "") { ?>
                <td><?= $user['acc_id'] ?></td>
                <td><?= $user['acc_username'] ?></td>
                <td><?= $user['acc_email'] ?></td>
-               <td><a href="<?= base_url('user/edit/' . $user['acc_id']); ?>" class="btn btn-dark text-primary">Edit</a></td>
-               <td><a href="<?= base_url('user/delete/' . $user['acc_id']); ?>" class="btn btn-dark text-warning">Delete</a></td>
+               <td><a href="<?= site_url('user/edit/' . $user['acc_id']); ?>" class="btn btn-dark text-primary">Edit</a></td>
+               <td><a href="<?= site_url('user/delete/' . $user['acc_id']); ?>" class="btn btn-dark text-warning">Delete</a></td>
             </tr>
 
          <?php

@@ -20,7 +20,7 @@ class User_model extends CI_Model
    public function getUser($acc_id)
    {
       $this->db->WHERE('acc_id', $acc_id); // SELECT acc_id FROM wisk_account WHERE ACC_ID = $acc_id;
-      return $user = $this->db->GET('wisk_account')->row_array(); // Retourne un tableau contenant TOUTES les informations d'UN enregistrement dans la table wisk_account.
+      return $this->db->GET('wisk_account')->row_array(); // Retourne un tableau contenant TOUTES les informations d'UN enregistrement dans la table wisk_account.
    }
 
    public function updateUser($acc_id, $formArray)

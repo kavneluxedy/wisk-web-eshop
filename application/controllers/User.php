@@ -10,11 +10,11 @@ class User extends CI_Controller
 	public function index()
 	{
 		$this->load->model('User_model');
-		$users = $this->User_model->getUsers();
-
 		$data = array();
-		$data['page_title'] = 'Wisk E-Sport | Utilisateurs';
+
+		$users = $this->User_model->getUsers();
 		$data['users'] = $users;
+		$data['page_title'] = 'Wisk E-Sport | Utilisateurs';
 
 		$this->load->view('templates/header');
 		$this->load->view('templates/navbar');
@@ -35,18 +35,17 @@ class User extends CI_Controller
 			$this->load->view('create');
 		} else {
 
-			$this->load->model('User_model');
-
 			$data = array();
-			$data['username'] = $this->input->post('acc_username');
-			$data['pass'] = $this->input->post('acc_pass');
-			$data['email'] = $this->input->post('acc_email');
+			$data['acc_username'] = $this->input->post('acc_username');
+			$data['acc_pass'] = $this->input->post('acc_pass');
+			$data['acc_email'] = $this->input->post('acc_email');
 			$data['secret_id'] = $this->input->post('secret_id');
 
+			$this->load->model('User_model');
 			$this->User_model->create($data);
 
 			$this->session->set_flashdata('success', 'Records added successfully !');
-			redirect(base_url('User', $data));
+			redirect(site_url('User', $data));
 		}
 	}
 
@@ -56,9 +55,8 @@ class User extends CI_Controller
 		$this->load->view('templates/navbar');
 
 		$this->load->model('User_model');
-		$user = $this->User_model->getUser($acc_id);
-
 		$data = array();
+		$user = $this->User_model->getUser($acc_id);
 		$data['user'] = $user;
 
 		$this->form_validation->set_rules('acc_username', 'Name', 'required');
@@ -74,7 +72,7 @@ class User extends CI_Controller
 
 			$this->User_model->updateUser($acc_id, $data);
 			$this->session->set_flashdata('success', 'Record updated successfully !');
-			redirect(base_url('User'));
+			redirect(site_url('User'));
 		}
 		$this->load->view('templates/footer');
 	}
@@ -85,28 +83,28 @@ class User extends CI_Controller
 		$user = $this->User_model->getUser($acc_id);
 		if (empty($user)) {
 			$this->session->set_flashdata('failure', 'Record not found in Database !');
-			redirect(base_url('User'));
+			redirect(site_url('User'));
 		} else {
 			$this->User_model->delete($acc_id);
 			$this->session->set_flashdata('success', 'Record deleted successfully !');
-			redirect(base_url('User'));
+			redirect(site_url('User'));
 		}
 	}
 
-
 	public function login()
 	{
-		$this->load->model('User_model');
+		if ($this->input->post()) {
+			$e = $this->input->post("acc_username_signIn");
+			$p = $this->input->post("acc_pass_signIn");
+			if ($this->auth->login($e, $p, "acc_id")) {
+				redirect(site_url("crud/liste"));
+			} else {
+				redirect(site_url("aut/login"));
+			}
+		}
 
-		$this->load->view('templates/header');
-		$this->load->view('templates/navbar');
-		$this->load->view('login');
-		$this->load->view('templates/footer');
-
-		$data = array();
-		$data['login'] = $this->input->post('acc_username');
-		$data['pwd'] = $this->input->post('acc_pass');
-		var_dump($data);
-		
+		$this->load->view("header");
+		$this->load->view("aut/login");
+		$this->load->view("footer");
 	}
 }

@@ -1,22 +1,20 @@
 <div class="row">
 	<div class="col-6 mb-5 d-flex flex-inline flex-wrap">
-		<form method="POST" action="<?php base_url('User/login'); ?>">
+		<form method="POST" action="<?php site_url('User/login'); ?>">
 
-			<label for="name">Nom
-				<input type='text' class='form-control bg-dark text-warning' name='acc_username'>
-			</label>
+			<label for="acc_username_signin"></label>Nom
+			<input type='text' class='form-control bg-dark text-warning' name='acc_username_signin'>
 
-			<label for="cat">Mot de passe
-				<input type='text' class='form-control bg-dark text-warning' name='acc_pass'>
-			</label>
 
+			<label for="acc_pass_signin"></label>Mot de passe
+			<input type='password' class='form-control bg-dark text-warning' name='acc_pass_signin'>
+
+			<label for=""></label>
 			<input type="submit" class='form-control btn-dark text-warning'>
 
 		</form>
 	</div>
 </div>
-
-
 
 <!-- <div class="row">
 		<div class="col-md-4 col-md-offset-4">
