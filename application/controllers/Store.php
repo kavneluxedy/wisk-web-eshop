@@ -5,8 +5,18 @@ class Store extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Store_model');
-		// $this->load->library('session');
-		// $this->load->library('basket');
+	}
+
+	public function index() // Accueil de la boutique
+	{
+		$data = array();
+		$data['page_title'] = 'Wisk E-Sport | Boutique';
+		$data['items'] = $this->Store_model->getItems();
+
+		$this->load->view('templates/header');
+		$this->load->view('templates/navbar');
+		$this->load->view('store_list', $data); // Appel de la vue avec transmission du tableau  
+		$this->load->view('templates/footer');
 	}
 
 	public function categories() //liste des produits disponibles à la vente
@@ -17,22 +27,6 @@ class Store extends CI_Controller
 		$this->load->view('templates/header');
 		$this->load->view('templates/navbar');
 		$this->load->view('categories', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function index() // Accueil de la boutique
-	{
-		$data = array();
-		$data['items'] = $this->Store_model->getItems();
-		$data['page_title'] = 'Wisk E-Sport | Boutique';
-
-		$this->load->view('templates/header');
-		$this->load->view('templates/navbar');
-
-		$sess_id = $this->session->session_id;
-		var_dump($sess_id);
-
-		$this->load->view('store_list', $data); // Appel de la vue avec transmission du tableau  
 		$this->load->view('templates/footer');
 	}
 

@@ -2,8 +2,6 @@
     <title><?= $page_title; ?></title>
 </head>
 
-
-
 <a href="" id="show">Show Element</a>
 <div id="hidden">I'm visible !</div>
 

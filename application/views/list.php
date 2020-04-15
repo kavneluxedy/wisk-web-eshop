@@ -1,15 +1,5 @@
 <title><?= $page_title; ?></title>
 
-<?php $success = $this->session->userdata('success');
-if ($success != "") { ?>
-   <div class="alert alert-success"><?= $success; ?></div>
-<?php } ?>
-
-<?php $failure = $this->session->userdata('failure');
-if ($failure != "") { ?>
-   <div class="alert alert-warning"><?= $failure; ?></div>
-<?php } ?>
-
 <h3>View Users</h3>
 
 <div class="col-md-8 text-right">
