@@ -36,15 +36,9 @@ class User_model extends CI_Model
       $this->db->delete('wisk_account');
    }
 
-<<<<<<< HEAD
    public function can_login($username, $password)
    {
       $this->db->WHERE('acc_username', $username);
       $this->db->WHERE('acc_password', $password);
       $valid_user = $this->db->GET('wisk_account');
-=======
-   public function login()
-   {
->>>>>>> 76f930e233c3c7acf37b553eea2cbfa0a6110200
    }
-}
