@@ -12,6 +12,7 @@ class Store_model extends CI_Model
    }
 
    function getCategories()
+<<<<<<< HEAD
    {
       return $this->db->GET('wisk_shop_categories');
    }
@@ -19,6 +20,27 @@ class Store_model extends CI_Model
    function getItems()
    {
       return $this->db->GET('wisk_shop_items')->result();
+=======
+   {
+      return $this->db->GET('wisk_shop_categories');
+   }
+
+   function getItems()
+   {
+      return $this->db->GET('wisk_shop_items')->result();
+   }
+
+   function caddy($data)
+   {
+      $this->load->model('User_model');
+
+      $data = array();
+      $data['acc_id'] = $this->User_model->getUser($acc_id);
+      $data['item_name'] = $this->input->post('item_name');
+      $data['item_price'] = $this->input->post('item_price');
+
+      $this->basket->ADD($data);
+>>>>>>> 76f930e233c3c7acf37b553eea2cbfa0a6110200
    }
 
    // function basket()
