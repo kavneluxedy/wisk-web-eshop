@@ -5,10 +5,6 @@ class Store extends CI_Controller
    {
       parent::__construct();
       $this->load->model('Store_model');
-<<<<<<< HEAD
-=======
-      // $this->load->library('session');
->>>>>>> 76f930e233c3c7acf37b553eea2cbfa0a6110200
    }
 
    public function index() // Accueil de la boutique
@@ -68,37 +64,6 @@ class Store extends CI_Controller
       $this->load->view('templates/navbar');
       $this->load->view('categories', $data);
       $this->load->view('templates/footer');
-<<<<<<< HEAD
-=======
-   }
-
-   public function caddy()
-   {
-      $this->load->model('Store_model');
-      $this->session->destroy();
-
-      if (session_status() == 2) // Si la session a été initiée
-      {
-         echo '<body>Statut de la session :<br>(1) = SESSION IS ACTIVE BUT DO NOT EXISTS<br>(2) = SESSION (ALREADY) EXISTS</body><br>'.session_status();
-      } else // session_status == (0 || 1) (A session is active)
-      {
-         echo 'Impossible the answer like as 0 because session_status(0) = SESSION ARE DISABLED<br>';
-      }
-
-      $this->load->view('templates/footer');
-
-      $this->session->userdata('item_name');
-      $this->session->userdata('item_qty');
-      $this->session->userdata('item_price');
-
-      $data = array();
-      $data['page_title'] = 'Wisk E-Sport | Panier';
-
-      $this->load->view('templates/header');
-      $this->load->view('templates/navbar');
-      $this->load->view('store_caddy', $data);
-      $this->load->view('templates/footer');
->>>>>>> 76f930e233c3c7acf37b553eea2cbfa0a6110200
    }
 
    // public function basket()

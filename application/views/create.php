@@ -36,7 +36,6 @@
                <input type="text" name="prenom" id="prenom" class="form-control col-12 mb-1 transition shadow" />
                <span class="missName" id="missLastName"></span>
 
-<<<<<<< HEAD
                <label for="email" class="col-9 m-0">Adresse e-mail</label>
                <input type="text" name="email" id="email" placeholder="example@domain.net" class="form-control col-12 mb-1 transition shadow" />
 
@@ -54,17 +53,3 @@
       </form>
    </div>
 </div>
-=======
-      <div class="d-flex flex-wrap-col">
-         <label for="submit">
-            <input type="submit" id="submit" class="form-control bg-dark text-warning" placeholder="Valider">
-         </label>
-
-         <label for="reset">
-            <a class="btn btn-dark text-warning" href="<?= base_url('User'); ?>" role="button">Annuler</a>
-         </label>
-      </div>
-      
-   </form>
-</fieldset>
->>>>>>> 76f930e233c3c7acf37b553eea2cbfa0a6110200
