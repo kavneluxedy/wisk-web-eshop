@@ -1,43 +1,55 @@
-<fieldset class="d-flex flex-column flex-wrap-col">
-   <form class="form-group" name="createUser" method="POST" action="<?= base_url('User/create'); ?>">
+<div class="container">
+   <div class="row">
+      <form method="POST" action="User/create" id="form">
+         <fieldset class="col-auto m-0 p-4 bg-dark shadow text-light">
+            <div class="row">
 
-      <div class="form-group">
-         <label for="acc_username">Nom
-            <input type="text" id="acc_username" class="form-control" name="acc_username">
-            <?= form_error('acc_username'); ?>
-         </label>
-      </div>
+               <div clas="d-flex flex-row align-items-end justify-content-between">
+                  <div>
+                     <label for="objReq" class="col-auto mt-1">Objet de votre demande</label>
+                     <select id="objReq" name="objReq" class="form-control col-auto mb-1 transition" />
+                     <option selected disabled>--</option>
+                     <option value="SAV">SAV</option>
+                     <option value="DEVIS">Devis</option>
+                     <option value="OTHERS - TO DETERMINATE">Autres - à préciser</option>
+                     </select>
+                  </div>
+                  <div>
+                     <div>
+                        <label for="sexe" class="col-auto m-0">Civilité</label>
+                        <input type="text">
+                        <input type="radio" name="sexe" value="female">Mme.</input>
+                        <input type="radio" name="sexe" value="male">Mr.</input>
+                        </input>
+                     </div>
+                  </div>
+               </div>
 
-      <div class="form-group">
-         <label for="acc_pass">Mot de passe
-            <input type="password" id="acc_pass" class="form-control" name="acc_pass">
-            <?= form_error('acc_pass'); ?>
-         </label>
-      </div>
+            </div>
+            <div class="row">
 
-      <div class="form-group">
-         <label for="acc_email">Email
-            <input type="text" id="acc_email" class="form-control" name="acc_email">
-            <?= form_error('acc_email'); ?>
-         </label>
-      </div>
+               <label for="nom" class="col-3 m-0">Nom</label>
+               <input type="text" name="nom" id="nom" class="form-control col-12 mb-1 transition shadow" />
+               <span class="missFirstName" id="missName"></span>
 
-      <div class="form-group">
-         <label for="secret_id">Question secrète
-            <input type="text" id="secret_id" class="form-control" name="secret_id">
-            <?= form_error('secret_id'); ?>
-         </label>
-      </div>
+               <label for="prenom" class="col-9 m-0">Prénom</label>
+               <input type="text" name="prenom" id="prenom" class="form-control col-12 mb-1 transition shadow" />
+               <span class="missName" id="missLastName"></span>
 
-      <div class="d-flex flex-wrap-col">
-         <label for="submit">
-            <input type="submit" id="submit" class="form-control bg-success" placeholder="Valider">
-         </label>
+               <label for="email" class="col-9 m-0">Adresse e-mail</label>
+               <input type="text" name="email" id="email" placeholder="example@domain.net" class="form-control col-12 mb-1 transition shadow" />
 
-         <label for="reset">
-            <a class="btn btn-warning" href="<?= base_url('User'); ?>" role="button">Annuler</a>
-         </label>
-      </div>
+               <span class="missMail" id="missMail"></span>
 
-   </form>
-</fieldset>
+               <label for="uMsg" class="col-9 m-0">Votre message</label>
+               <textarea id="uMsg" name="uMsg" class="form-control mb-1 transition shadow" rows="2"></textarea>
+               <span class="missMsg" id="missMsg"></span>
+            </div>
+         </fieldset>
+         <div class="form-group d-flex justify-content-center mt-4">
+            <input type="reset" id="reset" value="Effacer" class="btn text-center shadow col-2 text-warning bg-dark" />
+            <input type="submit" id="submit" value="Envoyer" class="btn text-center shadow col-2 text-success bg-dark ml-2" />
+         </div>
+      </form>
+   </div>
+</div>

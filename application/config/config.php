@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']    = 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']    = 'english';
 
 /*
 |--------------------------------------------------------------------------
@@ -213,7 +213,7 @@ $config['directory_trigger'] = 'd';
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 2;
 
 /*
 |--------------------------------------------------------------------------
@@ -261,7 +261,7 @@ $config['log_file_permissions'] = 0644;
 | codes to set your own date formatting
 |
 */
-$config['log_date_format'] = 'Y-m-d H:i:s';
+$config['log_date_format'] = 'd-m-Y H:i:s';
 
 /*
 |--------------------------------------------------------------------------
@@ -314,7 +314,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'DVGHQn6r1xaggUk8pHqXupqspMwWjWqt';
 
 /*
 |--------------------------------------------------------------------------
@@ -390,11 +390,11 @@ $config['sess_regenerate_destroy'] = FALSE;
 |       'cookie_httponly') will also affect sessions.
 |
 */
-$config['cookie_prefix']	= '';
-$config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
-$config['cookie_secure']	= FALSE;
-$config['cookie_httponly'] 	= FALSE;
+$config['cookie_prefix']    = '';
+$config['cookie_domain']    = '';
+$config['cookie_path']        = '/';
+$config['cookie_secure']    = FALSE;
+$config['cookie_httponly']     = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -478,32 +478,3 @@ Module de panier d'achat - https://github.com/gregjaouen/codeigniter_libraries
 |
 */
 $config['basket'] = ['id_key' => 'item_id'];
-
-/* 
-|
-|--------------------------------------------------------------------------
-Module d'authentification - https://github.com/gregjaouen/codeigniter_libraries
-|--------------------------------------------------------------------------
-|
-*/
-$config['auth'] = [
-    'customer' => [
-        'table' => 'wisk_account',
-        'name' => 'input-email',
-        'password' => "input-password",
-    ],
-    'seller' => [
-        'table' => 'wisk_account',
-        'name' => 'acc_email',
-        'password' => 'acc_pass',
-        'encoding' => 'bcrypt'
-    ]
-];
-
-/* 
-|
-|--------------------------------------------------------------------------
-
-|--------------------------------------------------------------------------
-|
-*/

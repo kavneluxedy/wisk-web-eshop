@@ -1,0 +1,53 @@
+html {
+  font-size: 1rem;
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.shadow {
+  border: 1px solid black;
+  border-radius: 2rem 2rem;
+  box-shadow: 0.5rem 0.5rem 0.8rem #000000;
+  padding: 10px;
+}
+
+.shadow:focus {
+  border: 1px solid #ffc107;
+  border-radius: 0.5rem 0.5rem;
+}
+
+.shadow select {
+  border-radius: 2rem 0 0 2rem;
+}
+
+.shadow select:focus {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.shadow textarea {
+  border: 1px solid black;
+  border-radius: 2rem 2rem;
+  box-shadow: 0.5rem 0.5rem 0.8rem #000;
+}
+
+.shadow textarea:focus {
+  border: 1px solid #ffc107;
+  border-radius: 0.5rem 0.5rem;
+}
+
+.transition {
+  -webkit-transition: all 1.5s ease-out;
+  -moz-transition: all 1.5s ease-out;
+  -o-transition: all 1.5s ease-out;
+  -ms-transition: all 1.5s ease-out;
+  transition: all 1.5s ease-out;
+}
+
+a {
+  color: none !important;
+}

@@ -1,13 +1,19 @@
 <?php
 class User extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('User_model');
+    }
+
     public function index()
     {
         $this->load->model('User_model');
-        $users = $this->User_model->getAll();
+        $users = $this->User_model->getUsers();
 
         $data = array();
-        $data['page_title'] = 'List of Users';
+        $data['page_title'] = 'Wisk E-Sport | Utilisateurs';
         $data['users'] = $users;
 
         $this->load->view('templates/header');
@@ -16,28 +22,8 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    // public function _remap($method)
-    // {
-    //     switch ($method)
-    //     {
-    //         case 'index' :
-    //         break;
-            
-    //         case 'create' :
-    //         break;
-            
-    //         case 'edit' :
-    //         break;
-
-    //         case 'delete' :
-    //         break;
-    //     }
-    // }
-
     public function create()
     {
-        $this->load->model('User_model');
-
         $this->load->view('templates/header');
         $this->load->view('templates/navbar');
 
@@ -45,25 +31,30 @@ class User extends CI_Controller
         $this->form_validation->set_rules('acc_email', 'Email', 'required|valid_email');
 
         if ($this->form_validation->run() == FALSE) {
+
             $this->load->view('create');
         } else {
-            //Save records into Database 
-            $formArray = array();
-            $formArray['acc_username'] = $this->input->post('acc_username');
-            $formArray['acc_pass'] = $this->input->post('acc_pass');
-            $formArray['acc_email'] = $this->input->post('acc_email');
-            $formArray['secret_id'] = $this->input->post('secret_id');
-            $this->User_model->create($formArray);
+
+            $this->load->model('User_model');
+
+            $data = array();
+            $data['username'] = $this->input->post('acc_username');
+            $data['pass'] = $this->input->post('acc_pass');
+            $data['email'] = $this->input->post('acc_email');
+            $data['secret_id'] = $this->input->post('secret_id');
+
+            $this->User_model->create($data);
+
             $this->session->set_flashdata('success', 'Records added successfully !');
-            redirect(base_url('User', $formArray));
+            redirect(base_url('User', $data));
         }
     }
 
-    function edit($acc_id)
+    public function edit($acc_id)
     {
         $this->load->view('templates/header');
         $this->load->view('templates/navbar');
-        
+
         $this->load->model('User_model');
         $user = $this->User_model->getUser($acc_id);
 
@@ -73,40 +64,69 @@ class User extends CI_Controller
         $this->form_validation->set_rules('acc_username', 'Name', 'required');
         $this->form_validation->set_rules('acc_email', 'Email', 'required|valid_email');
 
-        if ($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             $this->load->view('edit', $data);
-        }
-        else // Update user records
+        } else // Update user records
         {
-            $formArray = array();
-            $formArray['acc_username'] = $this->input->post('acc_username');
-            $formArray['acc_email'] = $this->input->post('acc_email');
-            $this->User_model->updateUser($acc_id, $formArray);
+            $data = array();
+            $data['acc_username'] = $this->input->post('acc_username');
+            $data['acc_email'] = $this->input->post('acc_email');
+
+            $this->User_model->updateUser($acc_id, $data);
             $this->session->set_flashdata('success', 'Record updated successfully !');
             redirect(base_url('User'));
         }
         $this->load->view('templates/footer');
     }
 
-    function delete($acc_id)
+    public function delete($acc_id)
     {
         $this->load->model('User_model');
         $user = $this->User_model->getUser($acc_id);
-        if (empty($user))
-        {
+        if (empty($user)) {
             $this->session->set_flashdata('failure', 'Record not found in Database !');
             redirect(base_url('User'));
-        } else 
-        {
+        } else {
             $this->User_model->delete($acc_id);
             $this->session->set_flashdata('success', 'Record deleted successfully !');
             redirect(base_url('User'));
         }
     }
 
-    public function login() {
+    public function login()
+    {
         $this->load->view('templates/header');
-        $this->load->view('login');
+        $this->load->view('templates/navbar');
+        $data['title'] = 'Sign In';
+        $this->load->view('admin/login', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function login_validation()
+    {
+        $this->form_validation->set_rules('acc_username', 'Username', 'required');
+        $this->form_validation->set_rules('acc_pass', 'Password', 'required');
+
+        if ($this->form_validation->run()) { // Si le formulaire a été envoyé
+            // Get values passe from SignIn.php
+            $username = $this->input->post('acc_username');
+            $password = $this->input->post('acc_pass');
+            //prevent MySql Injections
+            $username = stripcslashes($username);
+            $password = stripcslashes($password);
+
+            // Model function
+            if ($this->user_model->can_login($username, $password)) {
+                $session_data = array(
+                    'username' => $username
+                );
+                $this->session->set_userdata($session_data);
+                redirect(base_url('User'));
+            } else {
+                $this->session->set_flashdata('error', 'Invalid Username and Password');
+            }
+        } else { //Les valeurs de connection au compte admin sont fausses
+            $this->login();
+        }
     }
 }
