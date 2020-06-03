@@ -1,6 +1,3 @@
-/*
-    (((((((( SCRIPT ))))))))
-*/
 $(document).ready(function () {
 
     $("#hidden").hide();

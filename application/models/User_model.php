@@ -9,7 +9,6 @@ class User_model extends CI_Model
    public function create($data)
    {
       $this->db->INSERT('wisk_account', $data); // INSERT INTO wisk_account (acc_username, acc_email) VALUES (? , ?);
-      // $this->db->query("INSERT INTO wisk_account VALUES ('?', 'username', 'pass', 'email', 'secret_id')");
    }
 
    public function getUsers()
@@ -38,7 +37,14 @@ class User_model extends CI_Model
 
    public function can_login($username, $password)
    {
-      $this->db->WHERE('acc_username', $username);
-      $this->db->WHERE('acc_password', $password);
-      $valid_user = $this->db->GET('wisk_account');
+      $this->db->WHERE('acc_username', $username); // SELECT acc_username, acc_pass FROM wisk_account
+      $this->db->WHERE('acc_pass', $password); // WHERE acc_username = $username AND acc_pass = $password;
+      $query = $this->db->GET('wisk_account');
+
+      if ($query->num_rows() > 0) {
+         return true;
+      } else {
+         return false;
+      }
    }
+}

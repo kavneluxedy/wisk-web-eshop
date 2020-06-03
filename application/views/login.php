@@ -1,35 +1,21 @@
 <div class="row">
-	<div class="col-6 mb-5 d-flex flex-inline flex-wrap">
-		<form method="POST" action="<?php base_url('User/login'); ?>">
+	<div class="col-12 mb-5 d-flex flex-row form-group flex-wrap justify-content-center">
+		<form method="POST" action="<?php base_url('User/login_validation'); ?>" id="form">
+			<fieldset class=" d-flex flex-row p-4 bg-dark shadow text-light">
 
-			<label for="name">Nom
-				<input type='text' class='form-control bg-dark text-warning' name='acc_username'>
-			</label>
+				<label for="acc_username">Entrer votre Identifiant
+					<input type='text' class='form-group bg-dark text-warning shadow transition mr-2' name='acc_username'>
+				</label>
 
-			<label for="cat">Mot de passe
-				<input type='text' class='form-control bg-dark text-warning' name='acc_pass'>
-			</label>
+				<label for="acc_pass">Entrer votre Mot de passe
+					<input type='password' class='form-group bg-dark text-warning mb-4 shadow transition mr-2' name='acc_pass'>
+				</label>
 
-			<input type="submit" class='form-control btn-dark text-warning'>
+				<input type="submit" value="Envoyer" class='btn btn-primary btn-dark text-warning'>
+				<input type="reset" value="Effacer" class='btn btn-warning btn-dark text-warning'>
 
+				<?= $this->session->flashdata('error'); ?>
+			</fieldset>
 		</form>
 	</div>
 </div>
-
-
-
-<!-- <div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<h1 class="text-center"></h1>
-			<div class="form-group">
-				<input type="email" name="acc_email" class="form-control" placeholder="Enter E-mail Adress" required autofocus>
-			</div>
-			<div class="form-group">
-				<input type="text" name="acc_username" class="form-control" placeholder="Enter Username" required autofocus>
-			</div>
-			<div class="form-group">
-				<input type="password" name="acc_pass" class="form-control" placeholder="Enter Password" required autofocus>
-			</div>
-			<button type="submit" class="btn btn-dark btn-block">Login</button>
-		</div>
-	</div> -->
