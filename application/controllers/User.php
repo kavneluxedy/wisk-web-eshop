@@ -33,42 +33,58 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function admin()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
+        $this->load->view('admin/admin');
+        $this->load->view('templates/footer');
+    }
+
+    public function regex_check($str)
+    {
+        if (preg_match("/^(?:'[A-Za-z](([\._\-][A-Za-z0-9])|[A-Za-z0-9])*[a-z0-9_]*')$/", $str)) {
+            $this->form_validation->set_message('regex_check', 'The %s field is not valid!');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
     public function create()
     {
         $this->load->view('templates/header');
         $this->load->view('templates/navbar');
 
-        // $this->form_validation->set_rules('acc_username', 'Name', 'required|max_length[50]');
+        $this->form_validation->set_rules('acc_username', 'login', 'required|min_length[3]|max_length[50]');
         // $this->form_validation->set_rules(['label' => 'acc_username', 'field' => 'acc_username', 'rules' => 'required|min_length[3]|max_length[50]|callback_check_acc_username_exists']);
 
-        // $this->form_validation->set_rules('acc_email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('acc_email', 'email_adress', 'required|valid_email|max_length[255]');
         // $this->form_validation->set_rules(['label' => 'acc_email', 'field' => 'acc_email', 'rules' => 'required|valid_email|callback_check_acc_email_exists']);
 
-        // $this->form_validation->set_rules('secret_id', 'Secret_ID', 'required');
-        // $this->form_validation->set_rules(['label' => 'secret_id', 'field' => 'secret_id', 'rules' => 'required']);
-
-        // $this->form_validation->set_rules('acc_pass', 'Password', 'required|min_length[8]');
+        $this->form_validation->set_rules('acc_pass', 'password', 'required|min_length[8]');
         // $this->form_validation->set_rules(['label' => 'acc_pass', 'field' => 'acc_pass', 'rules' => 'trim/required|min_length[8]']);
 
-        // $this->form_validation->set_rules(['acc_passconf', 'Password', 'required|matches[acc_pass']);
+        $this->form_validation->set_rules(['acc_passconf', 'password_confirmation', 'required|matches[acc_pass]']);
         // $this->form_validation->set_rules(['label' => 'acc_passconf', 'field' => 'acc_passconf', 'rules' => 'required|matches[acc_pass]']);
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->session->set_flashdata('failure', 'Error ! Form not sended');
-            $this->load->view('create');
-        } else {
-            $data = array(
-                'acc_username' => $this->input->post('acc_username'),
-                'acc_pass' => md5($this->input->post('acc_pass')),
-                'acc_passconf' => $this->input->post('acc_passconf'),
-                'acc_email' => $this->input->post('acc_email'),
-                'secret_id' => $this->input->post('secret_id')
-            );
-            $this->session->set_userdata($data);
-            $this->User_model->create($data);
-            $this->session->set_flashdata('success', 'Records added successfully !');
+        $this->form_validation->set_rules('secret_id', 'secret_question', 'required');
+        // $this->form_validation->set_rules(['label' => 'secret_id', 'field' => 'secret_id', 'rules' => 'required']);
 
+        if ($this->form_validation->run() === true) {
+            $data = array(
+                'acc_username'      => htmlspecialchars($this->input->post('acc_username')),
+                'acc_email'         => htmlspecialchars($this->input->post('acc_email')),
+                'acc_pass'          => md5($this->input->post('acc_pass')),
+                'acc_passconf'      => md5($this->input->post('acc_passconf')),
+                'secret_id'         => intval($this->input->post('secret_id'))
+            );
+            $this->User_model->create($data);
+            $this->session->set_userdata($data);
+            $this->session->set_flashdata('success', 'Records added successfully !');
             $this->load->view('admin/welcome');
+        } else {
+            $this->load->view('create');
         }
     }
 
@@ -131,16 +147,16 @@ class User extends CI_Controller
         $this->form_validation->set_rules('acc_pass', 'Password', 'required|min_length[8]');
 
         // Traitement du formulaire de connexion
-        if ($this->form_validation->run() === FALSE) { // Si le formulaire a été envoyé sans respecter les règles de validation du login
+        if ($this->form_validation->run() == TRUE) { // Si le formulaire a été envoyé sans respecter les règles de validation du login
 
             // Get values passe from login.php
             $data = array();
-            $data['acc_username'] = $this->input->post('acc_username');
-            $data['acc_pass'] = $this->input->post('acc_pass');
+            $username = $this->input->post('acc_username');
+            $acc_pass = $this->input->post('acc_pass');
 
             // Prevent MySql Injections
-            $username = stripcslashes($data['acc_username']);
-            $password = stripcslashes($data['acc_pass']);
+            $username = $data['acc_username'];
+            $password = $data['acc_pass'];
 
             // Model function
             if ($this->user_model->can_login($username, $password)) {
@@ -152,7 +168,7 @@ class User extends CI_Controller
                 $this->session->set_userdata($session_data);
                 redirect(base_url('admin/welcome'));
             } else {
-                $this->session->set_flashdata('error', 'Invalid Username & Password');
+                $this->session->set_flashdata('login_failed', 'Invalid Username & Password');
                 redirect(base_url('User/login'));
             }
         } else { //Les valeurs de connection au compte utilisateur sont fausses

@@ -16,6 +16,7 @@ class Store extends CI_Controller
       $data['page_title'] = 'Wisk E-Sport | Boutique';
       $data['items'] = $items;
 
+
       $this->load->view('templates/header');
       $this->load->view('templates/navbar');
       $this->load->view('store_list', $data); // Appel de la vue avec transmission du tableau  
@@ -40,7 +41,7 @@ class Store extends CI_Controller
          $data = array();
          $data['name'] = $this->input->post('item_name');
          $data['cat_id'] = $this->input->post('cat_id');
-         $data['desc'] = $this->input->post('item_desc');
+         $data['cat_name'] = $this->input->post('cat_name');
          $data['img'] = $this->input->post('item_img');
          $data['price'] = $this->input->post('item_price');
          $data['stock'] = $this->input->post('item_stock');

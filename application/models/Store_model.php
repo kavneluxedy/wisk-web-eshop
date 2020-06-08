@@ -16,9 +16,19 @@ class Store_model extends CI_Model
       return $this->db->GET('wisk_shop_categories');
    }
 
+   function getCategorie()
+   {
+      $query = $this->db->query('SELECT wisk_shop_categories.cat_name FROM wisk_shop_categories JOIN wisk_shop_items ON wisk_shop_categories.cat_name = wisk_shop_items.cat_name');
+      return $query;
+   }
+
    function getItems()
    {
       return $this->db->GET('wisk_shop_items')->result();
+   }
+
+   function deleteItems($item_id)
+   {
    }
 
    function caddy($acc_id)

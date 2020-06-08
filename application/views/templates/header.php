@@ -12,14 +12,31 @@
 </head>
 
 <body>
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-12 bg-warning">
+   <header>
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-12 bg-light pt-5 mt-3">
 
-            <?php if ($this->session->flashdata('login_failed')) : ?>
-               <?php echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failed') . '</p>'; ?>
-            <?php endif; ?>
+               <?php if ($this->session->flashdata('login_failed')) : ?>
+                  <?php echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failed') . '</p>'; ?>
+               <?php endif; ?>
 
-            <?php if ($this->session->flashdata('login_success')) : ?>
-               <?php echo '<p class="alert alert-success">' . $this->session->flashdata('login_success') . '</p>'; ?>
-            <?php endif; ?>
+               <?php if ($this->session->flashdata('login_success')) : ?>
+                  <?php echo '<p class="alert alert-success">' . $this->session->flashdata('login_success') . '</p>'; ?>
+               <?php endif; ?>
+
+               <?php if ($this->session->flashdata('error_username')) : ?>
+                  <?php echo '<p class="alert alert-success">' . $this->session->flashdata('error_login') . '</p>'; ?>
+               <?php endif; ?>
+
+               <?php if ($this->session->flashdata('error_email')) : ?>
+                  <?php echo '<p class="alert alert-success">' . $this->session->flashdata('error_email') . '</p>'; ?>
+               <?php endif; ?>
+
+               <?php if ($this->session->flashdata('error_pass')) : ?>
+                  <?php echo '<p class="alert alert-success">' . $this->session->flashdata('error_pass') . '</p>'; ?>
+               <?php endif; ?>
+
+               <?php if ($this->session->flashdata('error_secret_id')) : ?>
+                  <?php echo '<p class="alert alert-success">' . $this->session->flashdata('error_secret_id') . '</p>'; ?>
+               <?php endif; ?>

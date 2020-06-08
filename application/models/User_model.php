@@ -41,6 +41,10 @@ class User_model extends CI_Model
       $this->db->WHERE('acc_pass', $password); // WHERE acc_username = $username AND acc_pass = $password;
       $query = $this->db->GET('wisk_account');
 
+      $user = $query->row();
+
+      $this->session->set_flashdata('Success', 'Logged In');
+
       if ($query->num_rows() > 0) {
          return true;
       } else {

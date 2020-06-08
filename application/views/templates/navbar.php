@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="d-flex flex-row col-12 bg-dark mb-5 justify-content-center">
+  <div class="d-flex flex-row col-12 bg-dark mb-5 justify-content-center fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <a class="navbar-brand text-light justify-content-start nth-child(1)" href="<?= site_url('Store'); ?>"><span class="text-warning">MON SITE</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,6 +13,7 @@
           <a class="nav-item nav-link text-light nth-child(5)" href="<?= site_url('Store'); ?>">View Items List</a>
           <a class="nav-item nav-link text-light nth-child(6)" href="<?= site_url('Store/create'); ?>" tabindex="-1" aria-disabled="true">Create Item</a>
           <a class="nav-item nav-link text-light nth-child(7)" href="<?= site_url('User/login'); ?>">Login</a>
+          <a href="<?= base_url('User/admin'); ?> ">Test</a>
         </div>
       </div>
     </nav>

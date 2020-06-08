@@ -1,19 +1,9 @@
-/* .table_label border{
-  border: 2px solid red;
-  border-radius: 0.5rem 0.5rem;
-} */
-
-/* #form {
-position: relative;
-top: 50px;
-right: 100px;
-} */
-
 .shadow {
   border: 1px solid #ffc107 !important;
   border-radius: 2rem 2rem !important;
   box-shadow: 0.5rem 0.5rem 0.8rem pink !important;
   padding: 5px !important;
+  /* max-width: 220px; */
 }
 
 .shadow:focus {
@@ -79,6 +69,9 @@ a {
   right: -30px;
 }
 
+.owl-carousel {
+  display: block !important;
+}
 /* :nth-child(1) {
   order: 4;
 }

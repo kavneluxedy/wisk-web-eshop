@@ -1,6 +1,6 @@
 <footer>
     <div class="row">
-        <div class="d-flex flex-row col-12 bg-dark justify-content-center">
+        <div class="d-flex flex-row col-12 bg-dark justify-content-center fixed-bottom">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand text-light" href="<?= site_url('Store'); ?>"><span class="text-warning">MON SITE</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,6 +18,7 @@
 <script type="text/javascript" src="<?= base_url("assets/js/bootstrap.min.js"); ?>"></script>
 <script type="text/javascript" src="<?= base_url("assets/js/script.js"); ?>"></script>
 <script type="text/javascript" src="<?= base_url("assets/js/ajax.js"); ?>"></script>
+<script type="text/javascript" src="<?= base_url('assets/js/js.js'); ?>"></script>
 </body>
 
 </html>

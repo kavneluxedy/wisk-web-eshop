@@ -5,10 +5,12 @@
 
 				<label for="acc_username">Entrer votre Identifiant
 					<input type='text' class='form-group bg-dark text-warning shadow transition mr-2' name='acc_username'>
+					<span class='bg-danger'><?php echo form_error('acc_username'); ?></span>
 				</label>
 
 				<label for="acc_pass">Entrer votre Mot de passe
 					<input type='password' class='form-group bg-dark text-warning mb-4 shadow transition mr-2' name='acc_pass'>
+					<span class='bg-danger'><?php echo form_error('acc_pass'); ?></span>
 				</label>
 
 				<input type="submit" value="Envoyer" class='btn btn-primary btn-dark text-warning'>
