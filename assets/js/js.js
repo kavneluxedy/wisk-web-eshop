@@ -1,15 +1,12 @@
+// var user = [];
+// user[0] = document.getElementById("acc_username").value;
+// user[1] = document.getElementById("acc_pass").value;
 
+// console.log('id : ' + user[0]);
+// console.log('password : ' + user[1]);
 
-if (document.getElementsByClassName('shadow') != '') {
-
-    var username = document.getElementsByClassName('shadow');
-    var login = username[1];
-
-    console.log(login.name+' = '+login.value);
-
-    if (RegExp('0', login.value)) {
-        console.log('RegExp respected : False');
-    } else {
-        console.log('RegExp respected : True');
-        }
-    };
+// if (RegExp("root", user["login"])) {
+//   console.log("RegExp respected : False");
+// } else {
+//   console.log("RegExp respected : True");
+// }

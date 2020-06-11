@@ -84,7 +84,7 @@ FORMULAIRE
                <button type="submit" class="btn btn-warning">Envoyer</button>
             </div>
             <div class="col-sm-10">
-               <input type="reset" class="btn btn-danger"></input>
+               <input type="reset" class="btn btn-danger">
             </div>
          </div>
 

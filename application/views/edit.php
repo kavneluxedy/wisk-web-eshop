@@ -1,5 +1,5 @@
 <fieldset class="d-flex flex-column flex-wrap-col">
-   <form class="form-group" name="updateUser" method="POST" action="<?= base_url('User/edit/') . $user['acc_id']; ?>">
+   <form class="form-group" name="updateUser" method="POST" action="<?= base_url('User/edit/' . $user['acc_id']); ?>">
 
       <div class="form-group">
          <label for="acc_username">Nom

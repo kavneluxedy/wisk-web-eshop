@@ -9,13 +9,24 @@
    <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>" />
    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css'); ?>" />
    <link rel="stylesheet" href="<?= base_url('assets/css/owl.carousel.min.css'); ?>" />
+   <link rel="stylesheet" href="<?= base_url('assets/css/argon.css'); ?>" />
 </head>
 
 <body>
    <header>
       <div class="container-fluid">
          <div class="row">
-            <div class="col-12 bg-light pt-5 mt-3">
+            <div class="col-12 position-relative bg-light mt-5 pt-5">
+
+               <?php $success = $this->session->userdata('success');
+               if ($success != "") { ?>
+                  <div class="alert alert-success"><?= $success; ?></div>
+               <?php } ?>
+
+               <?php $failure = $this->session->userdata('failure');
+               if ($failure != "") { ?>
+                  <div class="alert alert-warning"><?= $failure; ?></div>
+               <?php } ?>
 
                <?php if ($this->session->flashdata('login_failed')) : ?>
                   <?php echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failed') . '</p>'; ?>

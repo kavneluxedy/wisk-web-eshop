@@ -5,21 +5,31 @@
 <?php $this->load->model('Store_model');
 $this->Store_model->getCategorie(); ?>
 
-<!-- <a href="" id="show" class="d-flex flex-row justify-content-center important">Show Element</a>
-<div id="hidden">
+<a href="" id="show" class="d-flex flex-row justify-content-center">Show Element</a>
+
+<div id="hidden" class="">
     I'm visible !
-</div> -->
+</div>
 
 <div class="row">
     <div class="col-md-12 col-12">
 
-        <div class="card">
-            <h5 class="card-header text-center bg-dark text-warning">Ventes</h5> <!-- Conteneur de catégories -->
-            <div class="card-body d-flex flex-column bg-dark text-light justify-content-center">
-                <h5 class="card-title text-center align-items-start">Catégories</h5>
-                <p class="card-text text-center">Venez supporter votre équipe préférée en achetant le maillot de la team.</p>
-                <a href="<?= base_url('Store/categories'); ?>" class="col-2 btn btn-dark justify-content-center text-warning">Découvrir</a> <!-- Lien vers différentes catégories -->
+        <h5 class="card-header text-center bg-dark text-warning">Ventes</h5> <!-- Conteneur de catégories -->
+
+        <div class="card d-flex flex-row justify-content-around">
+
+            <div class="card-body d-flex flex-column bg-light text-dark justify-content-center border border-dark m-1">
+                <h5 class="card-title text-center text-dark align-items-start">Catégories</h5>
+                <p class="card-text text-center">Venez supporter votre équipe préférée en achetant le T-shirt de la team.</p>
+                <div class="card-text text-center"><a href="<?= base_url('Store/categories'); ?>" class="btn btn-dark text-warning">Découvrir</a></div><!-- Lien vers différentes catégories -->
             </div>
+
+            <div class="card-body d-flex flex-column bg-light text-dark justify-content-center border border-dark m-1">
+                <h5 class="card-title text-center text-dark align-items-start">Catégories</h5>
+                <p class="card-text text-center">Venez supporter votre équipe préférée en achetant la manette de la team.</p>
+                <div class="card-text text-center"><a href="<?= base_url('Store/categories'); ?>" class="btn btn-dark text-warning">Découvrir</a></div><!-- Lien vers différentes catégories -->
+            </div>
+
         </div>
 
         <!-- <div class="modal-body">

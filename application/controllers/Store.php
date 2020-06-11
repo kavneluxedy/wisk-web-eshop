@@ -67,6 +67,13 @@ class Store extends CI_Controller
       $this->load->view('templates/footer');
    }
 
+   public function gallery()
+   {
+      $this->load->view('templates/header');
+      $this->load->view('templates/navbar');
+      $this->load->view('templates/gallery');
+      $this->load->view('templates/footer');
+   }
    // public function basket()
    // {
    //    $this->load->model('Store_model');
