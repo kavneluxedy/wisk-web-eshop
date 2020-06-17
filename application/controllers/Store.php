@@ -77,15 +77,16 @@
          $this->load->view('templates/footer');
       }
 
-      public function item()
+      public function item($item_id)
       {
          $this->load->view('templates/header');
          $this->load->view('templates/navbar');
+         $item = $this->Store_model->getItem($item_id);
 
          $data = array();
          $data = [
             'page_title'       => 'Items Administration',
-            'items'            => $this->Store_model->getItems()
+            'item'            => $item
          ];
 
          $this->load->view('store/item', $data);
@@ -107,30 +108,21 @@
 
       public function edit($item_id)
       {
-         // $this->load->model('User_model');
          $this->load->view('templates/header');
          $this->load->view('templates/navbar');
 
+         $this->load->model('User_model');
          $item = $this->Store_model->getItem($item_id);
 
          $data = array();
+         $data['page_title'] = "Modify an Item";
          $data['item'] = $item;
-
-         // $_POST = array();
-         // $_POST = [
-         //    'cat_id' => $this->input->post('cat_id'),
-         //    'item_name' => $this->input->post('item_name'),
-         //    'item_desc' => $this->input->post('item_desc'),
-         //    'item_img' => $this->input->post('item_img'),
-         //    'item_price' => $this->input->post('item_price'),
-         //    'item_stock' => $this->input->post('item_stock'),
-         // ];
 
          $this->form_validation->set_rules('item_name', 'Item Name', 'required|max_length[50]');
 
          if ($this->form_validation->run() === FALSE) {
             $this->load->view('store/edit', $data);
-         } else // Update user records
+         } else // Update item records
          {
             $data = [
                'cat_id' => $this->input->post('cat_id'),

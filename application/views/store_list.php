@@ -10,10 +10,10 @@
 
 					<thead>
 						<tr>
+							<th class="border border-light" scope="col">Image</th>
 							<th class="border border-light" scope="col">ID</th>
 							<th class="border border-light" scope="col">Name</th>
 							<th class="border border-light" scope="col">Description</th>
-							<th class="border border-light" scope="col">Image</th>
 							<th class="border border-light" scope="col">Price</th>
 							<th class="border border-light" scope="col">Stock</th>
 							<th class="border border-light" scope="col">Delete</th>
@@ -27,16 +27,16 @@
 								foreach ($items as $row) {
 							?>
 						<tr>
+							<td class="border border-light"><a role="button" class="btn" href="<?= base_url('Store/item/' . $row->item_id); ?>"><?= "<img src='$row->item_img' width='50'/>"; ?></td>
 							<td class="border border-light"><?= $row->item_id ?></td>
 							<td class="border border-light"><?= $row->item_name ?></td>
 							<td class="border border-light"><?= $row->item_desc ?></td>
-							<td class="border border-light"><?= "<img src='$row->item_img' width='50'/>"; ?></td>
 							<td class="border border-light"><?= $row->item_price ?></td>
 							<td class="border border-light"><?= $row->item_stock ?></td>
-							<td class="border border-light"><a role="button" href="<?= base_url('Store/delete/' . $row->item_id); ?>" class="form-control btn btn-dark text-warning">Delete</td>
 							<td class="border border-light">
 								<form action="<?= base_url('Store/edit/' . $row->item_id); ?>"><a role="button" href="<?= base_url('Store/edit/' . $row->item_id); ?>" class="form-control btn btn-dark bg-dark text-warning">Edit</a></form>
 							</td>
+							<td class="border border-light"><a role="button" href="<?= base_url('Store/delete/' . $row->item_id); ?>" class="form-control btn btn-dark text-warning">Delete</td>
 						</tr>
 					<?php }
 							} else {

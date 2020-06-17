@@ -18,24 +18,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <?php foreach ($items as $row) ?>
-                            <?php { ?>
+                        <?php foreach ($item as $row) { // Début de la boucle
+                        ?>
+                            <tr>
                                 <td class="border border-light"><?php echo $row->item_id; ?></td>
                                 <td class="border border-light"><?php echo $row->item_name; ?></td>
                                 <td class="border border-light"><?php echo $row->item_desc; ?></td>
                                 <td class="border border-light"><?php echo "<img src='$row->item_img' width='50'/>"; ?></td>
-                            <?php } ?>
-
-                            <td class="border border-light">
-                                <a role="button" href="<?= base_url('Store/delete/' . $row->item_id); ?>" placeholder="Delete" class="form-control btn btn-dark text-warning">
-                            </td>
-                            <td class="border border-light">
-                                <a role="button" href="<?= base_url('Store/edit/' . $row->item_id); ?>" value="Edit" class="form-control bg-dark text-warning">Edit</a>
-                            </td>
-                        </tr>
+                                <td class="border border-light">
+                                    <a role="button" href="<?= base_url('Store/delete/' . $row->item_id); ?>" placeholder="Delete" class="form-control btn btn-dark text-warning">
+                                </td>
+                                <td class="border border-light">
+                                    <a role="button" href="<?= base_url('Store/edit/' . $row->item_id); ?>" value="Edit" class="form-control bg-dark text-warning">Edit</a>
+                                </td>
+                            </tr>
+                        <?php } // Fin de la boucle 
+                        ?>
                     </tbody>
                 </table>
+                <?php var_dump($item); ?>
 
             </ul>
         </form>

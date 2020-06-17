@@ -26,6 +26,7 @@ class Store_model extends CI_Model
    {
       $this->db->WHERE('item_id', $item_id);
       $item = $this->db->GET('wisk_shop_items')->result();
+      return $item;
    }
 
    function delete($item_id)
