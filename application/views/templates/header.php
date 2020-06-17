@@ -10,6 +10,14 @@
    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css'); ?>" />
    <link rel="stylesheet" href="<?= base_url('assets/css/owl.carousel.min.css'); ?>" />
    <link rel="stylesheet" href="<?= base_url('assets/css/argon.css'); ?>" />
+   <link rel="stylesheet" media="screen and (max-width: 2560)" href="<?= base_url('assets/css/media_queries/2560px.css'); ?>" type="text/css" />
+   <link rel="stylesheet" media="screen and (max-width: 1090)" href="<?= base_url('assets/css/media_queries/1090.css'); ?>" type="text/css" />
+   <link rel="stylesheet" media="screen and (max-width: 992)" href="<?= base_url('assets/css/media_queries/992.css'); ?>" type="text/css" />
+   <link rel="stylesheet" media="screen and (max-width: 768)" href="<?= base_url('assets/css/media_queries/768.css'); ?>" type="text/css" />
+   <link rel="stylesheet" media="screen and (max-width: 576)" href="<?= base_url('assets/css/media_queries/576.css'); ?>" type="text/css" />
+   <!-- <link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2)" type="text/css" href="iphone4.css" /> -->
+   <link type="text/css" media="all and (orientation:portrait)" href="portrait.css">
+   <link type="text/css" media="all and (orientation:landscape)" href="landscape.css">
 </head>
 
 <body>

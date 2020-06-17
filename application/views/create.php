@@ -11,6 +11,17 @@
                      <//?= form_error('acc_username'); ?>
                   </label>
                </div> -->
+
+<?php $success = $this->session->userdata('success');
+if ($success != "") { ?>
+   <div class="alert alert-success"><?= $success; ?></div>
+<?php } ?>
+
+<?php $failure = $this->session->userdata('failure');
+if ($failure != "") { ?>
+   <div class="alert alert-warning"><?= $failure; ?></div>
+<?php } ?>
+
 <!-- 
 -------------------------------------------------------------------------------------
 FORMULAIRE

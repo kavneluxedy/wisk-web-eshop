@@ -10,44 +10,60 @@ if ($failure != "") { ?>
 
 <div class="row">
    <div class="col-12">
-      <fieldset class="d-flex flex-column flex-wrap-col">
-         <form class="form-group" method="POST" action="<?= base_url('Store'); ?>">
+      <ul class="list">
+         <fieldset class="d-flex flex-column flex-wrap-col">
+            <form class="form-group" method="POST" action="<?= base_url('Store/create'); ?>">
 
-            <label for="item_name">Nom
-               <input type="text" id="item_name" class="form-group transition shadow" name="item_name">
-            </label>
+               <table class="table table-scraped bg-dark text-warning">
+                  <thead>
 
-            <label for="cat_id">Catégorie
-               <input type="text" id="cat_id" class="form-group transition shadow" name="cat_id">
-            </label>
+                     <tr>
+                        <th class="border border-light" scope="col">Nom</th>
 
-            <label for="item_desc">Description
-               <input type="text" id="item_desc" class="form-group transition shadow" name="item_desc">
-            </label>
+                        <th class="border border-light" scope="col">Catégorie</th>
 
-            <label for="item_img">Image
-               <input type="text" id="item_img" class="form-group transition shadow" name="item_img">
-            </label>
+                        <th class="border border-light" scope="col">Description</th>
 
-            <label for="item_price">Prix
-               <input type="text" id="item_price" class="form-group transition shadow" name="item_price">
-            </label>
+                        <th class="border border-light" scope="col">Image</th>
 
-            <label for="item_stock">Stock
-               <input type="number" id="item_stock" class="form-control transition shadow" name="item_stock" min="0">
-            </label>
+                        <th class="border border-light" scope="col">Prix</th>
 
-            <div class="d-flex flex-wrap-col">
-               <label for="submit" class="submit">
-                  <input type="submit" id="submit" class="form-control bg-dark text-warning">
-               </label>
+                        <th class="border border-light" scope="col">Stock</th>
+                     </tr>
 
-               <label for="reset" class="reset">
-                  <input type="reset" id="reset" class="form-control bg-dark text-warning">
-               </label>
-            </div>
+                  </thead>
+                  <tbody>
 
-         </form>
-      </fieldset>
+                     <tr>
+                        <td><input type="text" class="border border-light form-group transition shadow" name="item_name"></td>
+
+                        <td><input type="number" class="border border-light form-group transition shadow" name="cat_id" min="1" max="5"></td>
+
+                        <td><input type="text" class="border border-light form-group transition shadow" name="item_desc"></td>
+
+                        <td><input type="text" class="border border-light form-group transition shadow" name="item_img"></td>
+
+                        <td><input type="number" class="border border-light form-group transition shadow" name="item_price" min="1"></td>
+
+                        <td><input type="number" class="border border-light form-group transition shadow" name="item_stock" min="1"></td>
+                     </tr>
+
+                  </tbody>
+               </table>
+
+               <div class="d-flex flex-wrap-col">
+                  <label for="submit" class="submit">
+                     <input type="submit" class="form-control bg-dark text-warning">
+                  </label>
+
+                  <label for="reset" class="reset">
+                     <input type="reset" class="form-control bg-dark text-warning">
+                  </label>
+               </div>
+
+
+            </form>
+         </fieldset>
+      </ul>
    </div>
 </div>

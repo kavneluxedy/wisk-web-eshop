@@ -26,15 +26,14 @@
 </div> <!-- container col-12 -->
 </div> <!-- Container row -->
 </div> <!-- Container -->
+<script type="text/javascript" href="<?= base_url('assets/js/showpass.js'); ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/crypto-js.min.js'); ?>"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/lightslider.min.js'); ?>"></script>
-<script type="text/javascript" src="<?= base_url('assets/js/jquery-3.4.1.min.js'); ?>"></script>
+<!-- <script type="text/javascript" src="<?= base_url('assets/js/jquery-3.4.1.min.js'); ?>"></script> -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script type="text/javascript" src="<?= base_url("assets/js/bootstrap.min.js"); ?>"></script>
-<!-- <script type="text/javascript" src="<?= base_url("assets/js/script.js"); ?>"></script> -->
 <script type="text/javascript" src="<?= base_url("assets/js/ajax.js"); ?>"></script>
-<!-- <script type="text/javascript" src="<?= base_url('assets/js/js.js'); ?>"></script> -->
 </body>
 
 </html>

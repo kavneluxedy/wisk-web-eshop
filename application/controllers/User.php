@@ -102,18 +102,9 @@ class User extends CI_Controller
                 'acc_passconf'      => md5($this->input->post('acc_passconf')),
                 'secret_id'         => intval($this->input->post('secret_id')),
             );
-            $acc_username = strtoupper(htmlspecialchars($this->input->post('acc_username')));
-            $acc_email = htmlspecialchars($this->input->post('acc_email'));
-
             $this->User_model->create($data);
             $this->session->set_userdata($data);
-            if ($acc_id = $this->User_model->getID($acc_username, $acc_email)) {
-                return $acc_id->row();
-            } else {
-                return FALSE;
-            };
-            $this->load->view('customers/edit_customer/' . $acc_id, $data);
-            echo $acc_id;
+            redirect(base_url('User'));
             $this->session->set_flashdata('success', 'Records added successfully !');
         }
         $this->load->view('templates/footer');
@@ -124,13 +115,15 @@ class User extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('templates/navbar');
 
-        $user = array(
-            'acc_username'      => $this->input->POST('acc_username'),
-            'acc_email'         => $this->input->POST('acc_email'),
-            'secret_id'         => $this->input->POST('secret_id')
-        );
+        $user = $this->User_model->getUser(4);
+        $data = [
+            'user'          => $user,
+            'page_title'    => 'Customer Profile',
+        ];
 
-        $this->load->view('customers/customer', $user);
+        $this->form_validation->set_rules('pw', 'Password', 'required|min_length[8]');
+
+        $this->load->view('customers/customer', $data);
         $this->load->view('templates/footer');
     }
 

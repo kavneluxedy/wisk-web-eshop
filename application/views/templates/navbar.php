@@ -1,6 +1,6 @@
 <div class="row">
   <div class="d-flex flex-row col-12 bg-dark mb-5 justify-content-center fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark media-nav">
       <a class="navbar-brand text-light justify-content-start nth-child(1)" href="<?= site_url('Store'); ?>"><span class="text-warning">MON SITE</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

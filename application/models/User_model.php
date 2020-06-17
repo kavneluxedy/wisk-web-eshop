@@ -20,19 +20,7 @@ class User_model extends CI_Model
    public function getUser($acc_id)
    {
       $this->db->WHERE('acc_id', $acc_id); // SELECT acc_id FROM wisk_account WHERE ACC_ID = $acc_id;
-      return $user = $this->db->GET('wisk_account')->row(1); // Retourne un tableau contenant TOUTES les informations d'UN enregistrement($acc_id) dans la table wisk_account.
-   }
-
-   public function getID($acc_username, $acc_email)
-   {
-      $query = $this->db->query('SELECT wisk_account.acc_id, wisk_account.acc_username FROM wisk_account WHERE acc_username LIKE "root" AND acc_email LIKE "root@%.%";');
-
-      if ($query->num_rows() == TRUE) {
-         return 'True';
-      } else {
-         return 'false';
-      }
-      redirect(base_url('User/edit_customer/176', $query));
+      return $user = $this->db->GET('wisk_account')->result(); // Retourne un tableau contenant TOUTES les informations d'UN enregistrement($acc_id) dans la table wisk_account.
    }
 
    public function updateUser($acc_id, $formArray)
@@ -47,7 +35,6 @@ class User_model extends CI_Model
    {
       $this->db->where('acc_id', $acc_id);
       $this->db->delete('wisk_account');
-
       $this->db->close();
    }
 

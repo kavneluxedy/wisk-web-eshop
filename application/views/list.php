@@ -1,4 +1,4 @@
-<h3>View Users</h3>
+<h3 class="mt-4">View Users</h3>
 
 <div class="col-md-8 text-right">
    <div class="row">
